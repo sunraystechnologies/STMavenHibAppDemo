@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 <hibernate-mapping package="in.co.sunrays.hibernate.pojo.rel">
-	<class name="OrganizationPOJO" table="organization" dynamic-insert="true"
-		dynamic-update="true">
-		<id name="organizationId" type="java.lang.Long" column="organizationId" length="20">
+
+	<!-- @version 1.0 -->
+	<!-- @since 16 Nov 2014 -->
+	<!-- @author SUNRAYS Developer -->
+	<!-- @Copyright (c) sunRays Technologies. All rights reserved. -->
+	<!-- @URL www.sunrays.co.in -->
+
+	<class name="OrganizationPOJO" table="ST_ORGANIZATION"
+		dynamic-insert="true" dynamic-update="true">
+		<id name="organizationId" type="java.lang.Long" column="organizationId"
+			length="20">
 			<generator class="increment"></generator>
 		</id>
 		<property name="name" type="java.lang.String" column="NAME"
@@ -16,9 +23,9 @@
 		<property name="phoneNo" type="java.lang.String" column="PHONE_NO"
 			length="20">
 		</property>
-	<set name="suppliers" cascade="all" table="vender" lazy="true">
-<key column="organizationId"></key>
-<many-to-many column="supplierId" class="SupplierPOJO"></many-to-many>
-</set>
+		<set name="suppliers" cascade="all" table="vender" lazy="true">
+			<key column="organizationId"></key>
+			<many-to-many column="supplierId" class="SupplierPOJO"></many-to-many>
+		</set>
 	</class>
 </hibernate-mapping>

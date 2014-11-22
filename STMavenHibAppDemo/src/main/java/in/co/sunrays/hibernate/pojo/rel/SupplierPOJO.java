@@ -1,7 +1,5 @@
 package in.co.sunrays.hibernate.pojo.rel;
 
-import java.util.Set;
-
 /**
  * Contains Supplier attributes and accessor methods. SupplierPOJO has
  * many-to-many relation with OrganizationPOJO
@@ -18,8 +16,6 @@ public class SupplierPOJO {
 	private String name;
 	private String adrress;
 	private String phoneNo;
-
-
 
 	public Long getSupplierId() {
 		return supplierId;

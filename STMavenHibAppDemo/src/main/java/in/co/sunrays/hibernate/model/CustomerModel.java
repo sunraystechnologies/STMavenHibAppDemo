@@ -12,7 +12,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 /**
- * Contains service methods of Customer. Manipulate Customer table using
+ * Contains service methods of Customer. Manipulate ST_CUSTOMER table using
  * CustomerPOJO
  *
  * @version 1.0
@@ -225,4 +225,3 @@ public class CustomerModel {
 	}
 
 }
-

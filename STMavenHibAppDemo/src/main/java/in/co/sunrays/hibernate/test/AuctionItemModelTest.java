@@ -7,11 +7,9 @@ import static org.junit.Assert.assertTrue;
 import in.co.sunrays.hibernate.model.AuctionItemModel;
 import in.co.sunrays.hibernate.pojo.rel.AuctionItemPOJO;
 import in.co.sunrays.hibernate.pojo.rel.BidPOJO;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

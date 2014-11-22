@@ -12,6 +12,7 @@ package in.co.sunrays.hibernate.pojo.inh;
 public class PaymentPOJO {
 	private long paymentid;
 	private int amount;
+
 	public long getPaymentid() {
 		return paymentid;
 	}

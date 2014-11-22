@@ -12,8 +12,8 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 /**
- * Contains service methods of AuctionItem. Manipulate AuctionItem table using
- * AuctionItemPOJO
+ * Contains service methods of AuctionItem. Manipulate ST_AUCTION_ITEM table
+ * using AuctionItemPOJO
  *
  * @version 1.0
  * @since 16 Nov 2014
@@ -219,4 +219,3 @@ public class AuctionItemModel {
 	}
 
 }
-

@@ -2,7 +2,6 @@ package in.co.sunrays.hibernate.model;
 
 import in.co.sunrays.hibernate.pojo.inh.PaymentPOJO;
 import in.co.sunrays.hibernate.util.HibernateUtil;
-
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -10,7 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 /**
- * Contains service methods of Payment. Manipulate Payment table using
+ * Contains service methods of Payment. Manipulate ST_PAYMENT table using
  * PaymentPOJO
  *
  * @version 1.0

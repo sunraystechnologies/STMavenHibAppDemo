@@ -7,9 +7,7 @@ import static org.junit.Assert.assertTrue;
 import in.co.sunrays.hibernate.model.CustomerModel;
 import in.co.sunrays.hibernate.pojo.rel.CustomerPOJO;
 import in.co.sunrays.hibernate.pojo.rel.PhonePOJO;
-
 import java.util.List;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

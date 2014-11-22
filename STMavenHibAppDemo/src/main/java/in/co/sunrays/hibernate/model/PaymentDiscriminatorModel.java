@@ -1,6 +1,6 @@
 package in.co.sunrays.hibernate.model;
 
-import in.co.sunrays.hibernate.pojo.inh.PaymentDisrPOJO;
+import in.co.sunrays.hibernate.pojo.inh.PaymentDiscriminatorPOJO;
 import in.co.sunrays.hibernate.util.HibernateUtil;
 
 import org.apache.log4j.Logger;
@@ -10,8 +10,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 /**
- * Contains service methods of PaymentDisr. Manipulate PaymentDisr table using
- * PaymentDisrPOJO
+ * Contains service methods of PaymentDiscriminator. Manipulate
+ * ST_PAYMENT_DISCRIMINATOR table using PaymentDiscriminatorPOJO
  *
  * @version 1.0
  * @since 16 Nov 2014
@@ -19,9 +19,10 @@ import org.hibernate.Transaction;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
-public class PaymentDisrModel {
+public class PaymentDiscriminatorModel {
 
-	private static Logger log = Logger.getLogger(PaymentDisrModel.class);
+	private static Logger log = Logger
+			.getLogger(PaymentDiscriminatorModel.class);
 
 	SessionFactory factory = HibernateUtil.getSessionFactory();
 
@@ -31,7 +32,7 @@ public class PaymentDisrModel {
 	 * @param pojo
 	 * @return
 	 */
-	public long add(PaymentDisrPOJO pojo) {
+	public long add(PaymentDiscriminatorPOJO pojo) {
 		log.debug("Model add Started");
 		long pk = 0;
 
@@ -63,7 +64,7 @@ public class PaymentDisrModel {
 	 * @param pojo
 	 * @return
 	 */
-	public void update(PaymentDisrPOJO pojo) {
+	public void update(PaymentDiscriminatorPOJO pojo) {
 		log.debug("Model update Started");
 		Transaction transaction = null;
 		Session session = null;
@@ -89,7 +90,7 @@ public class PaymentDisrModel {
 	 * @param pojo
 	 * @return
 	 */
-	public void delete(PaymentDisrPOJO pojo) {
+	public void delete(PaymentDiscriminatorPOJO pojo) {
 		log.debug("Model delete Started");
 		Session session = null;
 		Transaction transaction = null;
@@ -115,13 +116,14 @@ public class PaymentDisrModel {
 	 * @param pojo
 	 * @return
 	 */
-	public PaymentDisrPOJO findByPK(long pk) {
+	public PaymentDiscriminatorPOJO findByPK(long pk) {
 		log.debug("Model findByPK Started");
 		Session session = null;
-		PaymentDisrPOJO pojo = null;
+		PaymentDiscriminatorPOJO pojo = null;
 		try {
 			session = factory.openSession();
-			pojo = (PaymentDisrPOJO) session.get(PaymentDisrPOJO.class, pk);
+			pojo = (PaymentDiscriminatorPOJO) session.get(
+					PaymentDiscriminatorPOJO.class, pk);
 		} catch (HibernateException e) {
 			log.error("Database Exception..", e);
 		} finally {

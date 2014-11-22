@@ -8,30 +8,27 @@
 	<!-- @Copyright (c) sunRays Technologies. All rights reserved. -->
 	<!-- @URL www.sunrays.co.in -->
 
-	<class name="PaymentPOJO" table="ST_PAYMENT">
+	<class name="PaymentHierarchyPOJO" table="ST_PAYMENT_HIERARCHY">
 		<id name="paymentid" type="java.lang.Long" column="PaymentId"
 			length="20">
 			<generator class="increment"></generator>
 		</id>
+		<discriminator column="paymentType" />
 		<property name="amount" type="java.lang.Integer" column="Amount"
 			length="20"></property>
-
-		<joined-subclass name="CashPOJO" table="ST_CASH">
-			<key column="paymentid" />
-		</joined-subclass>
-
-		<joined-subclass name="ChaquePOJO" table="ST_CHAQUE">
-			<key column="paymentid" />
-			<property name="chaquenumber" type="java.lang.Integer"
-				column="ChaqueNumber" length="20"></property>
-			<property name="bankname" type="java.lang.String" column="BankName"
-				length="50"></property>
-		</joined-subclass>
-
-		<joined-subclass name="CreditCardPOJO" table="ST_CREDIT_CARD">
-			<key column="paymentid" />
+		<subclass name="CreditCardHierarchyPOJO" discriminator-value="Credit">
 			<property name="cctype" type="java.lang.Integer" column="CCType"
 				length="20"></property>
-		</joined-subclass>
+		</subclass>
+
+		<subclass name="ChaqueHierarchyPOJO" discriminator-value="Chauqe">
+			<property name="bankname" type="java.lang.String" column="BankName"
+				length="50"></property>
+			<property name="chaquenumber" type="java.lang.Integer"
+				column="ChaqueNumber" length="50"></property>
+		</subclass>
+
+		<subclass name="CashHierarchyPOJO" discriminator-value="Cash">
+		</subclass>
 	</class>
 </hibernate-mapping>

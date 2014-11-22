@@ -3,20 +3,16 @@ package in.co.sunrays.hibernate.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import in.co.sunrays.hibernate.model.PaymentHirchModel;
-import in.co.sunrays.hibernate.pojo.inh.ChaqueHirchPOJO;
-import in.co.sunrays.hibernate.pojo.inh.CreditCardHirchPOJO;
-import in.co.sunrays.hibernate.pojo.inh.PaymentHirchPOJO;
-
+import in.co.sunrays.hibernate.model.PaymentDiscriminatorModel;
+import in.co.sunrays.hibernate.pojo.inh.ChaqueDiscriminatorPOJO;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * Test program of PaymentHirchModel
+ * Test program of PaymentDiscriminatorModel
  * 
  * @version 1.0
  * @since 16 Nov 2014
@@ -24,8 +20,8 @@ import org.junit.Test;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
-public class PaymentHirchModelTest {
-	PaymentHirchModel model = new PaymentHirchModel();
+public class PaymentDiscriminatorModelTest {
+	PaymentDiscriminatorModel model = new PaymentDiscriminatorModel();
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -49,12 +45,13 @@ public class PaymentHirchModelTest {
 
 	@Test
 	public void testAdd() throws Exception {
-		CreditCardHirchPOJO pojo = new CreditCardHirchPOJO();
+		ChaqueDiscriminatorPOJO pojo = new ChaqueDiscriminatorPOJO();
 		pojo.setAmount(2000);
-		pojo.setCctype(123442);
+		pojo.setBankname("BOB");
+		pojo.setChaquenumber(2354677);
 		long pk = model.add(pojo);
 
-		pojo = (CreditCardHirchPOJO) model.findByPK(pk);
+		pojo = (ChaqueDiscriminatorPOJO) model.findByPK(pk);
 
 		assertNotNull("Error : Payment Add Fail", pojo);
 	}
@@ -62,13 +59,14 @@ public class PaymentHirchModelTest {
 	@Test
 	public void testUpdate() throws Exception {
 
-		CreditCardHirchPOJO pojo = (CreditCardHirchPOJO) model.findByPK(1l);
+		ChaqueDiscriminatorPOJO pojo = (ChaqueDiscriminatorPOJO) model
+				.findByPK(1l);
 
-		pojo.setAmount(4000);
-		pojo.setCctype(453);
-		;
+		pojo.setAmount(3000);
+		pojo.setBankname("sbi");
+		pojo.setChaquenumber(367574486);
 		model.update(pojo);
-		CreditCardHirchPOJO updatedPOJO = (CreditCardHirchPOJO) model
+		ChaqueDiscriminatorPOJO updatedPOJO = (ChaqueDiscriminatorPOJO) model
 				.findByPK(1l);
 
 		assertEquals("Error : Payment Update Fail", pojo.getAmount(),
@@ -78,11 +76,11 @@ public class PaymentHirchModelTest {
 
 	@Test
 	public void testDelete() throws Exception {
-		CreditCardHirchPOJO pojo = new CreditCardHirchPOJO();
+		ChaqueDiscriminatorPOJO pojo = new ChaqueDiscriminatorPOJO();
 		pojo.setPaymentid(1l);
 		model.delete(pojo);
 
-		pojo = (CreditCardHirchPOJO) model.findByPK(pojo.getPaymentid());
+		pojo = (ChaqueDiscriminatorPOJO) model.findByPK(pojo.getPaymentid());
 
 		assertNull("Error : Delete Test Fail", pojo);
 
@@ -92,7 +90,8 @@ public class PaymentHirchModelTest {
 	@Test
 	public void testFindByPK() throws Exception {
 
-		CreditCardHirchPOJO pojo = (CreditCardHirchPOJO) model.findByPK(1l);
+		ChaqueDiscriminatorPOJO pojo = (ChaqueDiscriminatorPOJO) model
+				.findByPK(1l);
 
 		assertNotNull("Error : Payment Get By Id Fail", pojo);
 
@@ -100,7 +99,7 @@ public class PaymentHirchModelTest {
 
 			System.out.println(pojo.getPaymentid());
 			System.out.println(pojo.getAmount());
-			System.out.println(pojo.getCctype());
+			System.out.println(pojo.getBankname());
 		}
 
 	}

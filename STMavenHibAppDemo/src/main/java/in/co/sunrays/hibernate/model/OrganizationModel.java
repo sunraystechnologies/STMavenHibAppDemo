@@ -1,21 +1,8 @@
 package in.co.sunrays.hibernate.model;
 
-/**
- * Contains service methods of Organization. Manipulate Organization table using
- * OrganizationPOJO
- *
- * @version 1.0
- * @since 16 Nov 2014
- * @author SUNRAYS Developer
- * @Copyright (c) sunRays Technologies. All rights reserved.
- * @URL www.sunrays.co.in
- */
-
 import in.co.sunrays.hibernate.pojo.rel.OrganizationPOJO;
 import in.co.sunrays.hibernate.util.HibernateUtil;
-
 import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -24,6 +11,16 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
+/**
+ * Contains service methods of Organization. Manipulate ST_ORGANIZATION table
+ * using OrganizationPOJO
+ *
+ * @version 1.0
+ * @since 16 Nov 2014
+ * @author SUNRAYS Developer
+ * @Copyright (c) sunRays Technologies. All rights reserved.
+ * @URL www.sunrays.co.in
+ */
 public class OrganizationModel {
 	private static Logger log = Logger.getLogger(OrganizationModel.class);
 

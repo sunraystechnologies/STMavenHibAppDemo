@@ -6,12 +6,10 @@ import static org.junit.Assert.assertNull;
 import in.co.sunrays.hibernate.model.PaymentModel;
 import in.co.sunrays.hibernate.pojo.inh.ChaquePOJO;
 import in.co.sunrays.hibernate.pojo.inh.PaymentPOJO;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**

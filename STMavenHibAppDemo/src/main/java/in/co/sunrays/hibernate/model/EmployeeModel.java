@@ -2,9 +2,7 @@ package in.co.sunrays.hibernate.model;
 
 import in.co.sunrays.hibernate.pojo.rel.EmployeePOJO;
 import in.co.sunrays.hibernate.util.HibernateUtil;
-
 import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -14,7 +12,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 /**
- * Contains service methods of Employee. Manipulate Employee table using
+ * Contains service methods of Employee. Manipulate ST_EMPLOYEE table using
  * EmployeePOJO
  *
  * @version 1.0
@@ -219,4 +217,3 @@ public class EmployeeModel {
 	}
 
 }
-

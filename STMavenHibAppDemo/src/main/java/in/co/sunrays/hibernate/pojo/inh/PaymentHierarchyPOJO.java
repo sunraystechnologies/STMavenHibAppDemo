@@ -1,7 +1,7 @@
 package in.co.sunrays.hibernate.pojo.inh;
 
 /**
- * Contains PaymentHirch attributes and accessor methods.
+ * Contains PaymentHierarchy attributes and accessor methods.
  *
  * @version 1.0
  * @since 16 Nov 2014
@@ -9,7 +9,7 @@ package in.co.sunrays.hibernate.pojo.inh;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
-public class PaymentHirchPOJO {
+public class PaymentHierarchyPOJO {
 	private long paymentid;
 	private int amount;
 	private String paymentType;

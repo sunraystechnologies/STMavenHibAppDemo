@@ -21,7 +21,6 @@ public class OrganizationPOJO {
 	private String phoneNo;
 	private Set<SupplierPOJO> suppliers = new HashSet<SupplierPOJO>();
 
-
 	public Set<SupplierPOJO> getSuppliers() {
 		return suppliers;
 	}

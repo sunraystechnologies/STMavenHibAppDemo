@@ -1,7 +1,7 @@
 package in.co.sunrays.hibernate.pojo.inh;
 
 /**
- * Contains CashHirch attributes and accessor methods.
+ * Contains CashDiscriminator attributes and accessor methods.
  *
  * @version 1.0
  * @since 16 Nov 2014
@@ -9,6 +9,6 @@ package in.co.sunrays.hibernate.pojo.inh;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
-public class CashHirchPOJO extends PaymentHirchPOJO {
+public class CashDiscriminatorPOJO extends PaymentDiscriminatorPOJO {
 
 }

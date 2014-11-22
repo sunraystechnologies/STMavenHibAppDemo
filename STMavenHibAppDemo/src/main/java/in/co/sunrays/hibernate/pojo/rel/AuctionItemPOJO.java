@@ -20,7 +20,6 @@ public class AuctionItemPOJO {
 	private String description;
 	private BidPOJO successfulBid;
 
-
 	public Set<BidPOJO> getBids() {
 		return bids;
 	}

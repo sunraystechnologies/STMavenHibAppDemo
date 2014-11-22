@@ -1,7 +1,7 @@
 package in.co.sunrays.hibernate.pojo.inh;
 
 /**
- * Contains CashDisr attributes and accessor methods.
+ * Contains CashHierarchy attributes and accessor methods.
  *
  * @version 1.0
  * @since 16 Nov 2014
@@ -9,6 +9,6 @@ package in.co.sunrays.hibernate.pojo.inh;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
-public class CashDisrPOJO extends PaymentDisrPOJO {
+public class CashHierarchyPOJO extends PaymentHierarchyPOJO {
 
 }

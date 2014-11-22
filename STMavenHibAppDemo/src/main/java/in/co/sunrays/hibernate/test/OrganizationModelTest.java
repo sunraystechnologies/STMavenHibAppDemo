@@ -7,11 +7,9 @@ import static org.junit.Assert.assertTrue;
 import in.co.sunrays.hibernate.model.OrganizationModel;
 import in.co.sunrays.hibernate.pojo.rel.OrganizationPOJO;
 import in.co.sunrays.hibernate.pojo.rel.SupplierPOJO;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -55,7 +53,7 @@ public class OrganizationModelTest {
 
 	@Test
 	public void testAdd() throws Exception {
-		Set set = new HashSet();
+		Set<SupplierPOJO> set = new HashSet<SupplierPOJO>();
 		SupplierPOJO supplierPOJO = new SupplierPOJO();
 		supplierPOJO.setName("suppliertest");
 		supplierPOJO.setAdrress("suppliertest");

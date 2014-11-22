@@ -1,8 +1,7 @@
 package in.co.sunrays.hibernate.model;
 
-import in.co.sunrays.hibernate.pojo.inh.PaymentHirchPOJO;
+import in.co.sunrays.hibernate.pojo.inh.PaymentHierarchyPOJO;
 import in.co.sunrays.hibernate.util.HibernateUtil;
-
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -10,8 +9,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 /**
- * Contains service methods of PaymentHirch. Manipulate PaymentHirch table using
- * PaymentHirchPOJO
+ * Contains service methods of PaymentHierarchy. Manipulate ST_PAYMENT_HIERARCHY
+ * table using PaymentHierarchyPOJO
  *
  * @version 1.0
  * @since 16 Nov 2014
@@ -19,9 +18,9 @@ import org.hibernate.Transaction;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
-public class PaymentHirchModel {
+public class PaymentHierarchyModel {
 
-	private static Logger log = Logger.getLogger(PaymentHirchModel.class);
+	private static Logger log = Logger.getLogger(PaymentHierarchyModel.class);
 
 	SessionFactory factory = HibernateUtil.getSessionFactory();
 
@@ -31,7 +30,7 @@ public class PaymentHirchModel {
 	 * @param pojo
 	 * @return
 	 */
-	public long add(PaymentHirchPOJO pojo) {
+	public long add(PaymentHierarchyPOJO pojo) {
 		log.debug("Model add Started");
 		long pk = 0;
 
@@ -63,7 +62,7 @@ public class PaymentHirchModel {
 	 * @param pojo
 	 * @return
 	 */
-	public void update(PaymentHirchPOJO pojo) {
+	public void update(PaymentHierarchyPOJO pojo) {
 		log.debug("Model update Started");
 		Transaction transaction = null;
 		Session session = null;
@@ -89,7 +88,7 @@ public class PaymentHirchModel {
 	 * @param pojo
 	 * @return
 	 */
-	public void delete(PaymentHirchPOJO pojo) {
+	public void delete(PaymentHierarchyPOJO pojo) {
 		log.debug("Model delete Started");
 		Session session = null;
 		Transaction transaction = null;
@@ -115,13 +114,14 @@ public class PaymentHirchModel {
 	 * @param pojo
 	 * @return
 	 */
-	public PaymentHirchPOJO findByPK(long pk) {
+	public PaymentHierarchyPOJO findByPK(long pk) {
 		log.debug("Model findByPK Started");
 		Session session = null;
-		PaymentHirchPOJO pojo = null;
+		PaymentHierarchyPOJO pojo = null;
 		try {
 			session = factory.openSession();
-			pojo = (PaymentHirchPOJO) session.get(PaymentHirchPOJO.class, pk);
+			pojo = (PaymentHierarchyPOJO) session.get(
+					PaymentHierarchyPOJO.class, pk);
 		} catch (HibernateException e) {
 			log.error("Database Exception..", e);
 		} finally {
