@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="in.co.sunrays.hibernate.pojo.rel">
+	<class name="PhonePOJO" table="phone" dynamic-insert="true"
+		dynamic-update="true">
+		<id name="phoneId" type="java.lang.Long" column="PHONE_ID" length="20">
+			<generator class="increment"></generator>
+		</id>
+		<property name="phonenumber" type="java.lang.Long" column="PHONE_NUMBER"
+			length="20">
+		</property>
+	</class>
+</hibernate-mapping>

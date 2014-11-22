@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<hibernate-mapping package="in.co.sunrays.hibernate.pojo">
-	<class name="CustomerPOJO" table="CUSTOMER" dynamic-insert="true"
+<hibernate-mapping package="in.co.sunrays.hibernate.pojo.rel">
+	<class name="CustomerPOJO" table="Customer" dynamic-insert="true"
 		dynamic-update="true">
 		<id name="id" type="java.lang.Long" column="ID" length="20">
 			<generator class="increment"></generator>
@@ -22,5 +22,8 @@
 		<property name="contactNo" type="java.lang.Long" column="CONTACT_NO"
 			length="50">
 		</property>
+		<many-to-one name="phones" column="PHONE_NO" class="PhonePOJO"
+			cascade="all" not-null="true">
+		</many-to-one>
 	</class>
 </hibernate-mapping>

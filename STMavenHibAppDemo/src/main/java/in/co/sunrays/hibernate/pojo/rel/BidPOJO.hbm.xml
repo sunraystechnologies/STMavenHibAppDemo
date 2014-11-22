@@ -3,7 +3,7 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="in.co.sunrays.hibernate.pojo">
+<hibernate-mapping package="in.co.sunrays.hibernate.pojo.rel">
 
 	<class name="BidPOJO" table="Bid">
 		<id name="id" type="java.lang.Long" column="ID" length="20">

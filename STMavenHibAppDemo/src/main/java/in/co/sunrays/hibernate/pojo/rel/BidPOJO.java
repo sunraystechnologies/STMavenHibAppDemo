@@ -1,4 +1,4 @@
-package in.co.sunrays.hibernate.pojo;
+package in.co.sunrays.hibernate.pojo.rel;
 
 /**
  * Contains Bid attributes and accessor methods. BidPOJO has many-to-one
