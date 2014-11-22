@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="in.co.sunrays.hibernate.pojo.inh">
+
+	<!-- @version 1.0 -->
+	<!-- @since 16 Nov 2014 -->
+	<!-- @author SUNRAYS Developer -->
+	<!-- @Copyright (c) sunRays Technologies. All rights reserved. -->
+	<!-- @URL www.sunrays.co.in -->
+
+	<class name="PaymentHierarchyPOJO" table="ST_PAYMENT_HIERARCHY">
+		<id name="paymentid" type="java.lang.Long" column="PaymentId"
+			length="20">
+			<generator class="increment"></generator>
+		</id>
+		<discriminator column="paymentType" />
+		<property name="amount" type="java.lang.Integer" column="Amount"
+			length="20"></property>
+		<subclass name="CreditCardHierarchyPOJO" discriminator-value="Credit">
+			<property name="cctype" type="java.lang.Integer" column="CCType"
+				length="20"></property>
+		</subclass>
+
+		<subclass name="ChaqueHierarchyPOJO" discriminator-value="Chauqe">
+			<property name="bankname" type="java.lang.String" column="BankName"
+				length="50"></property>
+			<property name="chaquenumber" type="java.lang.Integer"
+				column="ChaqueNumber" length="50"></property>
+		</subclass>
+
+		<subclass name="CashHierarchyPOJO" discriminator-value="Cash">
+		</subclass>
+	</class>
+</hibernate-mapping>

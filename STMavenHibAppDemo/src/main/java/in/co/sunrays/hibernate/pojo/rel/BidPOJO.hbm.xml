@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="in.co.sunrays.hibernate.pojo.rel">
+
+	<!-- @version 1.0 -->
+	<!-- @since 16 Nov 2014 -->
+	<!-- @author SUNRAYS Developer -->
+	<!-- @Copyright (c) sunRays Technologies. All rights reserved. -->
+	<!-- @URL www.sunrays.co.in -->
+
+	<class name="BidPOJO" table="ST_BID">
+		<id name="id" type="java.lang.Long" column="ID" length="20">
+			<generator class="increment"></generator>
+		</id>
+		<property name="amount" type="java.lang.Integer" column="AMOUNT"
+			length="20" />
+		<property name="timestamp" type="java.lang.String" column="TIMESTAMP"
+			length="20" />
+	</class>
+
+</hibernate-mapping>

@@ -1,20 +1,18 @@
 package in.co.sunrays.hibernate.model;
 
-import in.co.sunrays.hibernate.pojo.EmployeePOJO;
-
+import in.co.sunrays.hibernate.pojo.rel.EmployeePOJO;
+import in.co.sunrays.hibernate.util.HibernateUtil;
 import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 
 /**
- * Contains service methods of Employee. Manipulate Employee table using
+ * Contains service methods of Employee. Manipulate ST_EMPLOYEE table using
  * EmployeePOJO
  *
  * @version 1.0
@@ -27,8 +25,7 @@ public class EmployeeModel {
 
 	private static Logger log = Logger.getLogger(EmployeeModel.class);
 
-	SessionFactory factory = new Configuration().configure()
-			.buildSessionFactory();
+	SessionFactory factory = HibernateUtil.getSessionFactory();
 
 	/**
 	 * Adds an Employee along with its Address
@@ -37,9 +34,9 @@ public class EmployeeModel {
 	 * @return
 	 */
 	public long add(EmployeePOJO pojo) {
-		
+
 		log.debug("Model add Started");
-		
+
 		long pk = 0;
 
 		Session session = factory.openSession();
@@ -182,7 +179,7 @@ public class EmployeeModel {
 			if (pojo.getId() > 0) {
 				criteria.add(Restrictions.eq("id", pojo.getId()));
 			}
-			
+
 			if (pojo.getFirstName() != null && pojo.getFirstName().length() > 0) {
 				criteria.add(Restrictions.like("firstName", pojo.getFirstName()
 						+ "%"));
@@ -191,7 +188,6 @@ public class EmployeeModel {
 				criteria.add(Restrictions.like("lastName", pojo.getLastName()
 						+ "%"));
 			}
-	
 
 			// if page size is greater than zero the apply pagination
 			if (pageSize > 0) {
@@ -219,6 +215,5 @@ public class EmployeeModel {
 		// TODO Auto-generated method stub
 		return search(pojo, 0, 0);
 	}
-
 
 }

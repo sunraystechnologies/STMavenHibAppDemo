@@ -5,11 +5,11 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import in.co.sunrays.hibernate.model.AuctionItemModel;
-import in.co.sunrays.hibernate.pojo.AuctionItemPOJO;
-import in.co.sunrays.hibernate.pojo.BidPOJO;
-
+import in.co.sunrays.hibernate.pojo.rel.AuctionItemPOJO;
+import in.co.sunrays.hibernate.pojo.rel.BidPOJO;
+import java.util.HashSet;
 import java.util.List;
-
+import java.util.Set;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -56,12 +56,14 @@ public class AuctionItemModelTest {
 		BidPOJO bidPOJO = new BidPOJO();
 		AuctionItemPOJO pojo = new AuctionItemPOJO();
 
-		pojo.setDescription("test");
+		pojo.setDescription("test Item");
 		bidPOJO.setAmount(200);
-		bidPOJO.setTimestamp("11:30");
+		bidPOJO.setTimestamp("11:30:11");
 		bidPOJO.setItemId(1);
+		Set<BidPOJO> itemsSet = new HashSet<BidPOJO>();
+		itemsSet.add(bidPOJO);
+		pojo.setBids(itemsSet);
 
-		pojo.setSuccessfulBid(bidPOJO);
 		long pk = model.add(pojo);
 		pojo = model.findByPK(pk);
 
@@ -73,12 +75,12 @@ public class AuctionItemModelTest {
 
 		AuctionItemPOJO pojo = model.findByPK(1l);
 
-		pojo.setDescription("testffsd");
+		pojo.setDescription("test Item update");
 		model.update(pojo);
-		AuctionItemPOJO updatedDTO = model.findByPK(1l);
+		AuctionItemPOJO updatedPOJO = model.findByPK(1l);
 
 		assertEquals("Error : AuctionItem Update Fail", pojo.getDescription(),
-				updatedDTO.getDescription());
+				updatedPOJO.getDescription());
 
 	}
 
@@ -95,7 +97,7 @@ public class AuctionItemModelTest {
 		System.out.println("Success : AuctionItem Delete Success");
 	}
 
-	@Test
+	@Ignore
 	public void testFindByPK() throws Exception {
 
 		AuctionItemPOJO pojo = model.findByPK(1l);

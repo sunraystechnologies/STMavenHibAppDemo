@@ -1,8 +1,8 @@
-package in.co.sunrays.hibernate.pojo;
+package in.co.sunrays.hibernate.pojo.rel;
 
 /**
- * Contains Employee attributes and accessor methods. EmployeePOJO has one-to-one
- * relation with AddressPOJO
+ * Contains Employee attributes and accessor methods. EmployeePOJO has
+ * one-to-one relation with AddressPOJO
  *
  * @version 1.0
  * @since 16 Nov 2014
@@ -51,9 +51,11 @@ public class EmployeePOJO {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	public String getKey() {
-		return id +"";
+		return id + "";
 	}
+
 	public String getValue() {
 		return firstName + " " + lastName;
 	}

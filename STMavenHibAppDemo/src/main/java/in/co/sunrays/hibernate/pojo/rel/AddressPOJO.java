@@ -1,4 +1,4 @@
-package in.co.sunrays.hibernate.pojo;
+package in.co.sunrays.hibernate.pojo.rel;
 
 /**
  * Contains Address attributes and accessor methods. AddressPOJO has one-to-one

@@ -5,8 +5,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import in.co.sunrays.hibernate.model.EmployeeModel;
-import in.co.sunrays.hibernate.pojo.AddressPOJO;
-import in.co.sunrays.hibernate.pojo.EmployeePOJO;
+import in.co.sunrays.hibernate.pojo.rel.AddressPOJO;
+import in.co.sunrays.hibernate.pojo.rel.EmployeePOJO;
 
 import java.util.List;
 
@@ -14,7 +14,6 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -51,10 +50,9 @@ public class EmployeeModelTest {
 
 	@Test
 	public void testAdd() throws Exception {
-		AddressPOJO addressPOJO=new AddressPOJO();
+		AddressPOJO addressPOJO = new AddressPOJO();
 		EmployeePOJO pojo = new EmployeePOJO();
-		
-		
+
 		pojo.setFirstName("test");
 		pojo.setLastName("test");
 		addressPOJO.setCity("indore");
@@ -62,7 +60,7 @@ public class EmployeeModelTest {
 		addressPOJO.setState("mp");
 		addressPOJO.setStreet("bhawerkuan");
 		addressPOJO.setZip("452001");
-		
+
 		pojo.setAddress(addressPOJO);
 		long pk = model.add(pojo);
 		pojo = model.findByPK(pk);
@@ -78,10 +76,10 @@ public class EmployeeModelTest {
 		pojo.setFirstName("Alok");
 		pojo.setLastName("Mishra");
 		model.update(pojo);
-		EmployeePOJO updatedDTO = model.findByPK(1l);
+		EmployeePOJO updatedPOJO = model.findByPK(1l);
 
 		assertEquals("Error : Employee Update Fail", pojo.getValue(),
-				updatedDTO.getValue());
+				updatedPOJO.getValue());
 
 	}
 

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="in.co.sunrays.hibernate.pojo.inh">
+
+	<!-- @version 1.0 -->
+	<!-- @since 16 Nov 2014 -->
+	<!-- @author SUNRAYS Developer -->
+	<!-- @Copyright (c) sunRays Technologies. All rights reserved. -->
+	<!-- @URL www.sunrays.co.in -->
+
+	<class name="PaymentDiscriminatorPOJO" table="ST_PAYMENT_DISCRIMINATOR">
+		<id name="paymentid" type="java.lang.Long" column="PaymentId"
+			length="20">
+			<generator class="increment"></generator>
+		</id>
+		<discriminator column="paymentType"></discriminator>
+		<property name="amount" type="java.lang.Integer" column="Amount"
+			length="20"></property>
+
+		<subclass name="CreditCardDiscriminatorPOJO"
+			discriminator-value="cradit">
+			<join table="ST_CREDIT_PAYMENT_DISCRIMINATOR">
+				<key column="paymentid"></key>
+				<property name="cctype" type="java.lang.Integer" column="CCType"
+					length="20"></property>
+			</join>
+		</subclass>
+
+		<subclass name="ChaqueDiscriminatorPOJO" discriminator-value="cheque">
+			<join table="ST_CHEQUE_PAYMENT_DISCRIMINATOR">
+				<key column="paymentid"></key>
+				<property name="amount" type="java.lang.Integer" column="Amount"
+					length="20"></property>
+				<property name="bankname" type="java.lang.String" column="BankName"
+					length="50"></property>
+				<property name="chaquenumber" type="java.lang.Integer"
+					column="ChaqueNumber" length="50"></property>
+			</join>
+		</subclass>
+
+		<subclass name="CashDiscriminatorPOJO" discriminator-value="cash">
+			<join table="ST_CASH_PAYMENT_DISCRIMINATOR">
+				<key column="paymentid"></key>
+
+			</join>
+		</subclass>
+	</class>
+</hibernate-mapping>

@@ -1,6 +1,6 @@
 package in.co.sunrays.hibernate.model;
 
-import in.co.sunrays.hibernate.pojo.rel.AuctionItemPOJO;
+import in.co.sunrays.hibernate.pojo.rel.OrganizationPOJO;
 import in.co.sunrays.hibernate.util.HibernateUtil;
 import java.util.List;
 import org.apache.log4j.Logger;
@@ -12,8 +12,8 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 /**
- * Contains service methods of AuctionItem. Manipulate ST_AUCTION_ITEM table
- * using AuctionItemPOJO
+ * Contains service methods of Organization. Manipulate ST_ORGANIZATION table
+ * using OrganizationPOJO
  *
  * @version 1.0
  * @since 16 Nov 2014
@@ -21,21 +21,19 @@ import org.hibernate.criterion.Restrictions;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
-
-public class AuctionItemModel {
-
-	private static Logger log = Logger.getLogger(AuctionItemModel.class);
+public class OrganizationModel {
+	private static Logger log = Logger.getLogger(OrganizationModel.class);
 
 	SessionFactory factory = HibernateUtil.getSessionFactory();
 
 	/**
-	 * Adds an AuctionItem along with its Bids
+	 * Adds an Organization along with its Supplier
 	 * 
 	 * @param pojo
 	 * @return
 	 */
 
-	public long add(AuctionItemPOJO pojo) {
+	public long add(OrganizationPOJO pojo) {
 
 		log.debug("Model add Started");
 
@@ -64,12 +62,12 @@ public class AuctionItemModel {
 	}
 
 	/**
-	 * Updates an AuctionItem along with its Bids
+	 * Updates an Organization along with its Bids
 	 * 
 	 * @param pojo
 	 * @return
 	 */
-	public void update(AuctionItemPOJO pojo) {
+	public void update(OrganizationPOJO pojo) {
 		log.debug("Model update Started");
 		Transaction transaction = null;
 		Session session = null;
@@ -90,12 +88,12 @@ public class AuctionItemModel {
 	}
 
 	/**
-	 * Deletes an AuctionItem along with its Bids
+	 * Deletes an Organization along with its Supplier
 	 * 
 	 * @param pojo
 	 * @return
 	 */
-	public void delete(AuctionItemPOJO pojo) {
+	public void delete(OrganizationPOJO pojo) {
 		log.debug("Model delete Started");
 		Session session = null;
 		Transaction transaction = null;
@@ -116,23 +114,23 @@ public class AuctionItemModel {
 	}
 
 	/**
-	 * Finds an AuctionItem by its name.
+	 * Finds an Organization by its name.
 	 * 
 	 * @param pojo
 	 * @return
 	 */
 
-	public AuctionItemPOJO findByName(String name) {
+	public OrganizationPOJO findByName(String name) {
 		log.debug("Model findByName Started");
 		Session session = null;
-		AuctionItemPOJO pojo = null;
+		OrganizationPOJO pojo = null;
 		try {
 			session = factory.openSession();
-			Criteria criteria = session.createCriteria(AuctionItemPOJO.class);
-			criteria.add(Restrictions.eq("companyName", name));
+			Criteria criteria = session.createCriteria(OrganizationPOJO.class);
+			criteria.add(Restrictions.eq("name", name));
 			List list = criteria.list();
 			if (list.size() == 1) {
-				pojo = (AuctionItemPOJO) list.get(0);
+				pojo = (OrganizationPOJO) list.get(0);
 			}
 		} catch (HibernateException e) {
 			log.error("Database Exception..", e);
@@ -144,19 +142,19 @@ public class AuctionItemModel {
 	}
 
 	/**
-	 * Finds an AuctionItem by its primary key.
+	 * Finds an Organization by its primary key.
 	 * 
 	 * @param pojo
 	 * @return
 	 */
 
-	public AuctionItemPOJO findByPK(long pk) {
+	public OrganizationPOJO findByPK(long pk) {
 		log.debug("Model findByPK Started");
 		Session session = null;
-		AuctionItemPOJO pojo = null;
+		OrganizationPOJO pojo = null;
 		try {
 			session = factory.openSession();
-			pojo = (AuctionItemPOJO) session.get(AuctionItemPOJO.class, pk);
+			pojo = (OrganizationPOJO) session.get(OrganizationPOJO.class, pk);
 		} catch (HibernateException e) {
 			log.error("Database Exception..", e);
 		} finally {
@@ -167,35 +165,38 @@ public class AuctionItemModel {
 	}
 
 	/**
-	 * searches AuctionItems as per give parameters
+	 * searches Organizations as per give parameters
 	 * 
 	 * @param pojo
 	 * @return
 	 */
 
-	public List search(AuctionItemPOJO pojo, int pageNo, int pageSize) {
+	public List search(OrganizationPOJO pojo, int pageNo, int pageSize) {
 		log.debug("Model search Started");
 		Session session = null;
 		List list = null;
 		try {
 			session = factory.openSession();
-			Criteria criteria = session.createCriteria(AuctionItemPOJO.class);
-			if (pojo.getId() > 0) {
-				criteria.add(Restrictions.eq("id", pojo.getId()));
+			Criteria criteria = session.createCriteria(OrganizationPOJO.class);
+			if (pojo.getOrganizationId() > 0) {
+				criteria.add(Restrictions.eq("organizationid",
+						pojo.getOrganizationId()));
 			}
 
-			if (pojo.getDescription() != null
-					&& pojo.getDescription().length() > 0) {
-				criteria.add(Restrictions.like("description",
-						pojo.getDescription() + "%"));
-			}
+			if (pojo.getName() != null && pojo.getName().length() > 0) {
+				criteria.add(Restrictions.like("name", pojo.getName() + "%"));
+				if (pojo.getAdrress() != null && pojo.getAdrress().length() > 0) {
+					criteria.add(Restrictions.like("address", pojo.getAdrress()
+							+ "%"));
+				}
 
-			// if page size is greater than zero the apply pagination
-			if (pageSize > 0) {
-				criteria.setFirstResult(((pageNo - 1) * pageSize));
-				criteria.setMaxResults(pageSize);
+				// if page size is greater than zero the apply pagination
+				if (pageSize > 0) {
+					criteria.setFirstResult(((pageNo - 1) * pageSize));
+					criteria.setMaxResults(pageSize);
+				}
+				list = criteria.list();
 			}
-			list = criteria.list();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			log.error("Database Exception..", e);
@@ -207,15 +208,14 @@ public class AuctionItemModel {
 	}
 
 	/**
-	 * searches AuctionItems as per give parameters
+	 * searches Organizations as per give parameters
 	 * 
 	 * @param pojo
 	 * @return
 	 */
 
-	public List search(AuctionItemPOJO pojo) {
+	public List search(OrganizationPOJO pojo) {
 		// TODO Auto-generated method stub
 		return search(pojo, 0, 0);
 	}
-
 }

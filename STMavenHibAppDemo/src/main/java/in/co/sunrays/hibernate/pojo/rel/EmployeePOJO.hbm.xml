@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="in.co.sunrays.hibernate.pojo.rel">
+
+	<!-- @version 1.0 -->
+	<!-- @since 16 Nov 2014 -->
+	<!-- @author SUNRAYS Developer -->
+	<!-- @Copyright (c) sunRays Technologies. All rights reserved. -->
+	<!-- @URL www.sunrays.co.in -->
+
+	<class name="EmployeePOJO" table="ST_EMPLOYEE">
+		<id name="id" type="java.lang.Long" column="ID" length="20">
+			<generator class="increment"></generator>
+		</id>
+		<property name="firstName" type="java.lang.String" column="FIRST_NAME"
+			length="20" />
+		<property name="lastName" type="java.lang.String" column="LAST_NAME"
+			length="20" />
+		<one-to-one name="address" cascade="all" class="AddressPOJO" />
+	</class>
+
+</hibernate-mapping>
