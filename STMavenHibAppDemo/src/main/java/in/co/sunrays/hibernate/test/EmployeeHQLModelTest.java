@@ -1,23 +1,22 @@
 package in.co.sunrays.hibernate.test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import in.co.sunrays.hibernate.model.EmployeeModel;
-import in.co.sunrays.hibernate.pojo.rel.AddressPOJO;
+import in.co.sunrays.hibernate.model.EmployeeHQLModel;
 import in.co.sunrays.hibernate.pojo.rel.EmployeePOJO;
-
+import java.util.Iterator;
 import java.util.List;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * Test program of EmployeeModel
+ * Test program of EmployeeHQLModel
  * 
  * @version 1.0
  * @since 16 Nov 2014
@@ -25,8 +24,9 @@ import org.junit.Test;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
-public class EmployeeModelTest {
-	EmployeeModel model = new EmployeeModel();
+public class EmployeeHQLModelTest {
+
+	EmployeeHQLModel model = new EmployeeHQLModel();
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -49,44 +49,23 @@ public class EmployeeModelTest {
 	}
 
 	@Test
-	public void testAdd() throws Exception {
-		AddressPOJO addressPOJO = new AddressPOJO();
-		EmployeePOJO pojo = new EmployeePOJO();
-
-		pojo.setFirstName("test");
-		pojo.setLastName("test");
-		addressPOJO.setCity("indore");
-		addressPOJO.setEmail("test@gmail.com");
-		addressPOJO.setState("mp");
-		addressPOJO.setStreet("bhawerkuan");
-		addressPOJO.setZip("452001");
-
-		pojo.setAddress(addressPOJO);
-		long pk = model.add(pojo);
-		pojo = model.findByPK(pk);
-
-		assertNotNull("Error : Employee Add Fail", pojo);
-	}
-
-	@Test
 	public void testUpdate() throws Exception {
 
 		EmployeePOJO pojo = model.findByPK(1l);
-
-		pojo.setFirstName("Alok");
+		pojo.setFirstName("Aloksdfg");
 		pojo.setLastName("Mishra");
+		System.out.println("start");
 		model.update(pojo);
 		EmployeePOJO updatedPOJO = model.findByPK(1l);
-
 		assertEquals("Error : Employee Update Fail", pojo.getValue(),
 				updatedPOJO.getValue());
 
 	}
 
-	@Test
+	@Ignore
 	public void testDelete() throws Exception {
 		EmployeePOJO pojo = new EmployeePOJO();
-		pojo.setId(2l);
+		pojo.setId(1l);
 		model.delete(pojo);
 
 		pojo = model.findByPK(pojo.getId());
@@ -114,15 +93,17 @@ public class EmployeeModelTest {
 	}
 
 	@Test
-	public void testSearchEmployeePOJO() throws Exception {
+	public void testlistEmployeePOJO() throws Exception {
 
-		EmployeePOJO pojo = new EmployeePOJO();
-		pojo.setFirstName("te");
+		List list = (List) model.list();
 
-		List<EmployeePOJO> list = model.search(pojo);
+		assertTrue("Error : Test List Fail", list.size() > 0);
 
-		assertTrue("Error : Test Search Fail", list.size() > 0);
+		Iterator it = list.iterator();
+		while (it.hasNext()) {
+			EmployeePOJO pojo = (EmployeePOJO) it.next();
+			System.out.println(pojo.getValue());
+		}
 
 	}
-
 }
