@@ -21,6 +21,7 @@ import org.junit.Test;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
+
 public class PaymentModelTest {
 	PaymentModel model = new PaymentModel();
 

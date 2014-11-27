@@ -43,6 +43,9 @@
 			resource="in/co/sunrays/hibernate/pojo/inh/PaymentHierarchyPOJO.hbm.xml" />
 		<mapping
 			resource="in/co/sunrays/hibernate/pojo/inh/PaymentDiscriminatorPOJO.hbm.xml" />
+		<mapping resource="in/co/sunrays/hibernate/pojo/MarksheetPOJO.hbm.xml" />
+		<mapping resource="in/co/sunrays/hibernate/pojo/StudentPOJO.hbm.xml" />
+			<mapping resource="in/co/sunrays/hibernate/pojo/ProductPOJO.hbm.xml" />
 	</session-factory>
 
 </hibernate-configuration>

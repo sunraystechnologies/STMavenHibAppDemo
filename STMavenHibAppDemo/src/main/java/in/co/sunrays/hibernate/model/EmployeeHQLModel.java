@@ -1,10 +1,8 @@
 package in.co.sunrays.hibernate.model;
 
 import java.util.List;
-
 import in.co.sunrays.hibernate.pojo.rel.EmployeePOJO;
 import in.co.sunrays.hibernate.util.HibernateUtil;
-
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -22,6 +20,7 @@ import org.hibernate.Transaction;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
+
 public class EmployeeHQLModel {
 
 	private static Logger log = Logger.getLogger(EmployeeHQLModel.class);
@@ -33,6 +32,7 @@ public class EmployeeHQLModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public void update(EmployeePOJO pojo) {
 		log.debug("Model update Started");
 		Transaction transaction = null;
@@ -65,6 +65,7 @@ public class EmployeeHQLModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public void delete(EmployeePOJO pojo) {
 		log.debug("Model delete Started");
 		System.out.println(pojo.getId());
@@ -96,6 +97,7 @@ public class EmployeeHQLModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public EmployeePOJO findByPK(long pk) {
 		log.debug("Model findByPK Started");
 		EmployeePOJO pojo = null;
@@ -124,16 +126,43 @@ public class EmployeeHQLModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public List list() {
 		log.debug("Model list Started");
 		Session session = null;
-        List list = null;
+		List list = null;
 		try {
 			session = factory.openSession();
 			Query query = session.createQuery("from EmployeePOJO");
 			list = (List) query.list();
 			System.out.println("size" + list.size());
 		} catch (HibernateException e) {
+			log.error("Database Exception..", e);
+		} finally {
+			session.close();
+		}
+		log.debug("Model findByPK End");
+		return list;
+	}
+
+	/**
+	 * Lists an Employee and Phone .
+	 * 
+	 * @param pojo
+	 * @return
+	 */
+
+	public List joinlist() {
+		log.debug("Model list Started");
+		Session session = null;
+		List list = null;
+		try {
+			session = factory.openSession();
+			Query query = session
+					.createQuery("select e.id,e.firstName,p.phonenumber from EmployeePOJO e , PhonePOJO p where e.id=p.phoneId");
+			list = (List) query.list();
+			System.out.println("size" + list.size());
+		} catch (Exception e) {
 			log.error("Database Exception..", e);
 		} finally {
 			session.close();

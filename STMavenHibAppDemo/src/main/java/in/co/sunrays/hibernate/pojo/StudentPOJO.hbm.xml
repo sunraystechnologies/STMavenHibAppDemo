@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="in.co.sunrays.hibernate.pojo">
+
+	<!-- @version 1.0 -->
+	<!-- @since 16 Nov 2014 -->
+	<!-- @author SUNRAYS Developer -->
+	<!-- @Copyright (c) sunRays Technologies. All rights reserved. -->
+	<!-- @URL www.sunrays.co.in -->
+
+	<class name="StudentPOJO" table="ST_STUDENT" dynamic-insert="true"
+		dynamic-update="true">
+		<composite-id>
+			<key-property name="id" type="java.lang.Long" column="ID" length="20" />
+			<key-property name="branchId" type="java.lang.Long" column="BRANCH_ID" length="20" />
+		</composite-id>
+
+		<property name="firstName" type="java.lang.String" column="FIRST_NAME"
+			length="100">
+		</property>
+		<property name="lastName" type="java.lang.String" column="LAST_NAME"
+			length="100">
+		</property>
+		<property name="mobileNo" type="java.lang.Long" column="MOBILE_NO"
+			length="20">
+		</property>
+
+	</class>
+</hibernate-mapping>

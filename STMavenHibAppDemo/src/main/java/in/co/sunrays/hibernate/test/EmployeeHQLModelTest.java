@@ -1,18 +1,18 @@
 package in.co.sunrays.hibernate.test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import in.co.sunrays.hibernate.model.EmployeeHQLModel;
 import in.co.sunrays.hibernate.pojo.rel.EmployeePOJO;
+import in.co.sunrays.hibernate.pojo.rel.PhonePOJO;
 import java.util.Iterator;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -24,6 +24,7 @@ import org.junit.Test;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
+
 public class EmployeeHQLModelTest {
 
 	EmployeeHQLModel model = new EmployeeHQLModel();
@@ -62,7 +63,7 @@ public class EmployeeHQLModelTest {
 
 	}
 
-	@Ignore
+	@Test
 	public void testDelete() throws Exception {
 		EmployeePOJO pojo = new EmployeePOJO();
 		pojo.setId(1l);
@@ -103,6 +104,23 @@ public class EmployeeHQLModelTest {
 		while (it.hasNext()) {
 			EmployeePOJO pojo = (EmployeePOJO) it.next();
 			System.out.println(pojo.getValue());
+		}
+
+	}
+
+	@Test
+	public void testjoinlistEmployeePOJO() throws Exception {
+
+		List list = (List) model.joinlist();
+
+		assertTrue("Error : Test List Fail", list.size() > 0);
+
+		Iterator it = list.iterator();
+		while (it.hasNext()) {
+			EmployeePOJO pojo = (EmployeePOJO) it.next();
+			PhonePOJO phonePOJO = (PhonePOJO) it.next();
+			System.out.println(pojo.getFirstName() + ""
+					+ phonePOJO.getPhonenumber());
 		}
 
 	}

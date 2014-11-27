@@ -1,6 +1,6 @@
 package in.co.sunrays.hibernate.model;
 
-import in.co.sunrays.hibernate.pojo.rel.CustomerPOJO;
+import in.co.sunrays.hibernate.pojo.MarksheetPOJO;
 import in.co.sunrays.hibernate.util.HibernateUtil;
 import java.util.List;
 import org.apache.log4j.Logger;
@@ -12,8 +12,8 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 /**
- * Contains service methods of Customer. Manipulate ST_CUSTOMER table using
- * CustomerPOJO
+ * Contains service methods of Marksheet. Manipulate ST_Marksheet table using
+ * MarksheetPOJO
  *
  * @version 1.0
  * @since 16 Nov 2014
@@ -22,20 +22,20 @@ import org.hibernate.criterion.Restrictions;
  * @URL www.sunrays.co.in
  */
 
-public class CustomerModel {
+public class MarksheetModel {
 
-	private static Logger log = Logger.getLogger(CustomerModel.class);
+	private static Logger log = Logger.getLogger(MarksheetModel.class);
 
 	SessionFactory factory = HibernateUtil.getSessionFactory();
 
 	/**
-	 * Adds Customer
+	 * Adds Marksheet
 	 * 
 	 * @param pojo
 	 * @return
 	 */
 
-	public long add(CustomerPOJO pojo) {
+	public long add(MarksheetPOJO pojo) {
 		log.debug("Model add Started");
 		long pk = 0;
 
@@ -62,13 +62,13 @@ public class CustomerModel {
 	}
 
 	/**
-	 * Updates Customer
+	 * Updates Marksheet
 	 * 
 	 * @param pojo
 	 * @return
 	 */
 
-	public void update(CustomerPOJO pojo) {
+	public void update(MarksheetPOJO pojo) {
 		log.debug("Model update Started");
 		Transaction transaction = null;
 		Session session = null;
@@ -89,13 +89,13 @@ public class CustomerModel {
 	}
 
 	/**
-	 * Deletes Customer
+	 * Deletes Marksheet
 	 * 
 	 * @param pojo
 	 * @return
 	 */
 
-	public void delete(CustomerPOJO pojo) {
+	public void delete(MarksheetPOJO pojo) {
 		log.debug("Model delete Started");
 		Session session = null;
 		Transaction transaction = null;
@@ -116,23 +116,23 @@ public class CustomerModel {
 	}
 
 	/**
-	 * Finds Customer by its name.
+	 * Finds Marksheet by its name.
 	 * 
 	 * @param pojo
 	 * @return
 	 */
 
-	public CustomerPOJO findByName(String name) {
+	public MarksheetPOJO findByName(String name) {
 		log.debug("Model findByName Started");
 		Session session = null;
-		CustomerPOJO pojo = null;
+		MarksheetPOJO pojo = null;
 		try {
 			session = factory.openSession();
-			Criteria criteria = session.createCriteria(CustomerPOJO.class);
-			criteria.add(Restrictions.eq("companyName", name));
+			Criteria criteria = session.createCriteria(MarksheetPOJO.class);
+			criteria.add(Restrictions.eq("name", name));
 			List list = criteria.list();
 			if (list.size() == 1) {
-				pojo = (CustomerPOJO) list.get(0);
+				pojo = (MarksheetPOJO) list.get(0);
 			}
 		} catch (HibernateException e) {
 			log.error("Database Exception..", e);
@@ -144,19 +144,19 @@ public class CustomerModel {
 	}
 
 	/**
-	 * Finds Customer by its primary key.
+	 * Finds Marksheet by its primary key.
 	 * 
 	 * @param pojo
 	 * @return
 	 */
 
-	public CustomerPOJO findByPK(long pk) {
+	public MarksheetPOJO findByPK(long pk) {
 		log.debug("Model findByPK Started");
 		Session session = null;
-		CustomerPOJO pojo = null;
+		MarksheetPOJO pojo = null;
 		try {
 			session = factory.openSession();
-			pojo = (CustomerPOJO) session.get(CustomerPOJO.class, pk);
+			pojo = (MarksheetPOJO) session.get(MarksheetPOJO.class, pk);
 		} catch (HibernateException e) {
 			log.error("Database Exception..", e);
 		} finally {
@@ -167,69 +167,38 @@ public class CustomerModel {
 	}
 
 	/**
-	 * searches Customer as per give parameters
+	 * searches Marksheet as per give parameters
 	 * 
 	 * @param pojo
 	 * @return
 	 */
 
-	public List search(CustomerPOJO pojo, int pageNo, int pageSize) {
+	public List search(MarksheetPOJO pojo) {
 		log.debug("Model search Started");
 		Session session = null;
 		List list = null;
 		try {
 			session = factory.openSession();
-			Criteria criteria = session.createCriteria(CustomerPOJO.class);
+			Criteria criteria = session.createCriteria(MarksheetPOJO.class);
 			if (pojo.getId() > 0) {
 				criteria.add(Restrictions.eq("id", pojo.getId()));
 			}
-			if (pojo.getCompanyName() != null
-					&& pojo.getCompanyName().length() > 0) {
-				criteria.add(Restrictions.like("companyName",
-						pojo.getCompanyName() + "%"));
+			if (pojo.getName() != null && pojo.getName().length() > 0) {
+				criteria.add(Restrictions.like("name", pojo.getName() + "%"));
 			}
-			if (pojo.getFirstName() != null && pojo.getFirstName().length() > 0) {
-				criteria.add(Restrictions.like("firstName", pojo.getFirstName()
-						+ "%"));
-			}
-			if (pojo.getLastName() != null && pojo.getLastName().length() > 0) {
-				criteria.add(Restrictions.like("lastName", pojo.getLastName()
-						+ "%"));
-			}
-			if (pojo.getAddress() != null && pojo.getAddress().length() > 0) {
-				criteria.add(Restrictions.like("address", pojo.getAddress()
-						+ "%"));
-			}
-			if (pojo.getContactNo() > 0) {
-				criteria.add(Restrictions.like("contactNo", pojo.getContactNo()));
-			}
-
-			// if page size is greater than zero the apply pagination
-			if (pageSize > 0) {
-				criteria.setFirstResult(((pageNo - 1) * pageSize));
-				criteria.setMaxResults(pageSize);
+			if (pojo.getRollNo() != null && pojo.getRollNo().length() > 0) {
+				criteria.add(Restrictions.like("roll", pojo.getRollNo() + "%"));
 			}
 			list = criteria.list();
-		} catch (HibernateException e) {
+			System.out.println("size" + list.size());
+		} catch (Exception e) {
 			e.printStackTrace();
 			log.error("Database Exception..", e);
 		} finally {
 			session.close();
 		}
-		log.debug("Model search End");
+		log.debug("Model findByPK End");
 		return list;
-	}
-
-	/**
-	 * searches Customer as per give parameters
-	 * 
-	 * @param pojo
-	 * @return
-	 */
-
-	public List search(CustomerPOJO pojo) {
-		// TODO Auto-generated method stub
-		return search(pojo, 0, 0);
 	}
 
 }

@@ -2,7 +2,6 @@ package in.co.sunrays.hibernate.model;
 
 import in.co.sunrays.hibernate.pojo.inh.PaymentDiscriminatorPOJO;
 import in.co.sunrays.hibernate.util.HibernateUtil;
-
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -19,6 +18,7 @@ import org.hibernate.Transaction;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
+
 public class PaymentDiscriminatorModel {
 
 	private static Logger log = Logger
@@ -32,6 +32,7 @@ public class PaymentDiscriminatorModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public long add(PaymentDiscriminatorPOJO pojo) {
 		log.debug("Model add Started");
 		long pk = 0;
@@ -64,6 +65,7 @@ public class PaymentDiscriminatorModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public void update(PaymentDiscriminatorPOJO pojo) {
 		log.debug("Model update Started");
 		Transaction transaction = null;
@@ -90,6 +92,7 @@ public class PaymentDiscriminatorModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public void delete(PaymentDiscriminatorPOJO pojo) {
 		log.debug("Model delete Started");
 		Session session = null;
@@ -116,6 +119,7 @@ public class PaymentDiscriminatorModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public PaymentDiscriminatorPOJO findByPK(long pk) {
 		log.debug("Model findByPK Started");
 		Session session = null;

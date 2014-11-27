@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="in.co.sunrays.hibernate.pojo">
+
+	<!-- @version 1.0 -->
+	<!-- @since 16 Nov 2014 -->
+	<!-- @author SUNRAYS Developer -->
+	<!-- @Copyright (c) sunRays Technologies. All rights reserved. -->
+	<!-- @URL www.sunrays.co.in -->
+
+	<class name="MarksheetPOJO" table="ST_MARKSHEET" dynamic-insert="true"
+		dynamic-update="true">
+		<id name="id" type="java.lang.Long" column="ID" length="20">
+			<generator class="increment"></generator>
+		</id>
+		<property name="rollNo" type="java.lang.String" column="ROLL_NO"
+			length="100">
+		</property>
+		<property name="name" type="java.lang.String" column="NAME"
+			length="100">
+		</property>
+		<property name="physics" type="java.lang.Integer" column="PHYSICS"
+			length="20">
+		</property>
+		<property name="chemistry" type="java.lang.Integer" column="CHEMISTRY"
+			length="20">
+		</property>
+		<property name="maths" type="java.lang.Integer" column="MATHS"
+			length="50">
+		</property>
+	</class>
+</hibernate-mapping>

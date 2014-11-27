@@ -13,9 +13,10 @@ import java.util.Set;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
+
 public class OrganizationPOJO {
 
-	private Long organizationId;
+	private long organizationId;
 	private String name;
 	private String adrress;
 	private String phoneNo;
@@ -29,11 +30,11 @@ public class OrganizationPOJO {
 		this.suppliers = suppliers;
 	}
 
-	public Long getOrganizationId() {
+	public long getOrganizationId() {
 		return organizationId;
 	}
 
-	public void setOrganizationId(Long organizationId) {
+	public void setOrganizationId(long organizationId) {
 		this.organizationId = organizationId;
 	}
 

@@ -9,24 +9,26 @@ package in.co.sunrays.hibernate.pojo.rel;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
+
 public class PhonePOJO {
 
-	private Long phoneId;
-	private Long phonenumber;
+	private long phoneId;
+	private long phonenumber;
 
-	public Long getPhoneId() {
+	public long getPhoneId() {
 		return phoneId;
 	}
 
-	public void setPhoneId(Long phoneId) {
+	public void setPhoneId(long phoneId) {
 		this.phoneId = phoneId;
 	}
 
-	public Long getPhonenumber() {
+	public long getPhonenumber() {
 		return phonenumber;
 	}
 
-	public void setPhonenumber(Long phonenumber) {
+	public void setPhonenumber(long phonenumber) {
 		this.phonenumber = phonenumber;
 	}
+
 }

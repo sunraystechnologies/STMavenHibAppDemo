@@ -20,6 +20,7 @@ import org.junit.Test;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
+
 public class PaymentDiscriminatorModelTest {
 	PaymentDiscriminatorModel model = new PaymentDiscriminatorModel();
 
@@ -45,10 +46,12 @@ public class PaymentDiscriminatorModelTest {
 
 	@Test
 	public void testAdd() throws Exception {
+
 		ChaqueDiscriminatorPOJO pojo = new ChaqueDiscriminatorPOJO();
 		pojo.setAmount(2000);
 		pojo.setBankname("BOB");
 		pojo.setChaquenumber(2354677);
+
 		long pk = model.add(pojo);
 
 		pojo = (ChaqueDiscriminatorPOJO) model.findByPK(pk);
@@ -66,6 +69,7 @@ public class PaymentDiscriminatorModelTest {
 		pojo.setBankname("sbi");
 		pojo.setChaquenumber(367574486);
 		model.update(pojo);
+
 		ChaqueDiscriminatorPOJO updatedPOJO = (ChaqueDiscriminatorPOJO) model
 				.findByPK(1l);
 
@@ -76,6 +80,7 @@ public class PaymentDiscriminatorModelTest {
 
 	@Test
 	public void testDelete() throws Exception {
+
 		ChaqueDiscriminatorPOJO pojo = new ChaqueDiscriminatorPOJO();
 		pojo.setPaymentid(1l);
 		model.delete(pojo);

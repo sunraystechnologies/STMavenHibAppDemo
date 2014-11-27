@@ -10,18 +10,19 @@ package in.co.sunrays.hibernate.pojo.rel;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
+
 public class SupplierPOJO {
 
-	private Long supplierId;
+	private long supplierId;
 	private String name;
 	private String adrress;
 	private String phoneNo;
 
-	public Long getSupplierId() {
+	public long getSupplierId() {
 		return supplierId;
 	}
 
-	public void setSupplierId(Long supplierId) {
+	public void setSupplierId(long supplierId) {
 		this.supplierId = supplierId;
 	}
 

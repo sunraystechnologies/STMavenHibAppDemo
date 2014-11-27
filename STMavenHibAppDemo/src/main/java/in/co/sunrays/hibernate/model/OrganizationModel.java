@@ -21,6 +21,7 @@ import org.hibernate.criterion.Restrictions;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
+
 public class OrganizationModel {
 	private static Logger log = Logger.getLogger(OrganizationModel.class);
 
@@ -67,6 +68,7 @@ public class OrganizationModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public void update(OrganizationPOJO pojo) {
 		log.debug("Model update Started");
 		Transaction transaction = null;
@@ -93,6 +95,7 @@ public class OrganizationModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public void delete(OrganizationPOJO pojo) {
 		log.debug("Model delete Started");
 		Session session = null;

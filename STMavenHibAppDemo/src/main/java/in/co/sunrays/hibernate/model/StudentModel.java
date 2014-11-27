@@ -1,6 +1,6 @@
 package in.co.sunrays.hibernate.model;
 
-import in.co.sunrays.hibernate.pojo.rel.CustomerPOJO;
+import in.co.sunrays.hibernate.pojo.StudentPOJO;
 import in.co.sunrays.hibernate.util.HibernateUtil;
 import java.util.List;
 import org.apache.log4j.Logger;
@@ -12,8 +12,8 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 /**
- * Contains service methods of Customer. Manipulate ST_CUSTOMER table using
- * CustomerPOJO
+ * Contains service methods of Student. Manipulate ST_Student table using
+ * StudentPOJO
  *
  * @version 1.0
  * @since 16 Nov 2014
@@ -22,20 +22,20 @@ import org.hibernate.criterion.Restrictions;
  * @URL www.sunrays.co.in
  */
 
-public class CustomerModel {
+public class StudentModel {
 
-	private static Logger log = Logger.getLogger(CustomerModel.class);
+	private static Logger log = Logger.getLogger(StudentModel.class);
 
 	SessionFactory factory = HibernateUtil.getSessionFactory();
 
 	/**
-	 * Adds Customer
+	 * Adds Student
 	 * 
 	 * @param pojo
 	 * @return
 	 */
 
-	public long add(CustomerPOJO pojo) {
+	public long add(StudentPOJO pojo) {
 		log.debug("Model add Started");
 		long pk = 0;
 
@@ -47,7 +47,6 @@ public class CustomerModel {
 			pk = (Long) session.save(pojo);
 			transaction.commit();
 		} catch (Exception e) {
-			e.printStackTrace();
 			log.error("Database Exception..", e);
 			if (transaction != null) {
 				transaction.rollback();
@@ -62,13 +61,13 @@ public class CustomerModel {
 	}
 
 	/**
-	 * Updates Customer
+	 * Updates Student
 	 * 
 	 * @param pojo
 	 * @return
 	 */
 
-	public void update(CustomerPOJO pojo) {
+	public void update(StudentPOJO pojo) {
 		log.debug("Model update Started");
 		Transaction transaction = null;
 		Session session = null;
@@ -89,13 +88,13 @@ public class CustomerModel {
 	}
 
 	/**
-	 * Deletes Customer
+	 * Deletes Student
 	 * 
 	 * @param pojo
 	 * @return
 	 */
 
-	public void delete(CustomerPOJO pojo) {
+	public void delete(StudentPOJO pojo) {
 		log.debug("Model delete Started");
 		Session session = null;
 		Transaction transaction = null;
@@ -116,23 +115,23 @@ public class CustomerModel {
 	}
 
 	/**
-	 * Finds Customer by its name.
+	 * Finds Student by its name.
 	 * 
 	 * @param pojo
 	 * @return
 	 */
 
-	public CustomerPOJO findByName(String name) {
+	public StudentPOJO findByName(String name) {
 		log.debug("Model findByName Started");
 		Session session = null;
-		CustomerPOJO pojo = null;
+		StudentPOJO pojo = null;
 		try {
 			session = factory.openSession();
-			Criteria criteria = session.createCriteria(CustomerPOJO.class);
-			criteria.add(Restrictions.eq("companyName", name));
+			Criteria criteria = session.createCriteria(StudentPOJO.class);
+			criteria.add(Restrictions.eq("name", name));
 			List list = criteria.list();
 			if (list.size() == 1) {
-				pojo = (CustomerPOJO) list.get(0);
+				pojo = (StudentPOJO) list.get(0);
 			}
 		} catch (HibernateException e) {
 			log.error("Database Exception..", e);
@@ -144,19 +143,19 @@ public class CustomerModel {
 	}
 
 	/**
-	 * Finds Customer by its primary key.
+	 * Finds Student by its primary key.
 	 * 
 	 * @param pojo
 	 * @return
 	 */
 
-	public CustomerPOJO findByPK(long pk) {
+	public StudentPOJO findByPK(long pk) {
 		log.debug("Model findByPK Started");
 		Session session = null;
-		CustomerPOJO pojo = null;
+		StudentPOJO pojo = null;
 		try {
 			session = factory.openSession();
-			pojo = (CustomerPOJO) session.get(CustomerPOJO.class, pk);
+			pojo = (StudentPOJO) session.get(StudentPOJO.class, pk);
 		} catch (HibernateException e) {
 			log.error("Database Exception..", e);
 		} finally {
@@ -167,69 +166,39 @@ public class CustomerModel {
 	}
 
 	/**
-	 * searches Customer as per give parameters
+	 * searches Student as per give parameters
 	 * 
 	 * @param pojo
 	 * @return
 	 */
 
-	public List search(CustomerPOJO pojo, int pageNo, int pageSize) {
+	public List search(StudentPOJO pojo) {
 		log.debug("Model search Started");
 		Session session = null;
 		List list = null;
 		try {
 			session = factory.openSession();
-			Criteria criteria = session.createCriteria(CustomerPOJO.class);
+			Criteria criteria = session.createCriteria(StudentPOJO.class);
 			if (pojo.getId() > 0) {
 				criteria.add(Restrictions.eq("id", pojo.getId()));
-			}
-			if (pojo.getCompanyName() != null
-					&& pojo.getCompanyName().length() > 0) {
-				criteria.add(Restrictions.like("companyName",
-						pojo.getCompanyName() + "%"));
 			}
 			if (pojo.getFirstName() != null && pojo.getFirstName().length() > 0) {
 				criteria.add(Restrictions.like("firstName", pojo.getFirstName()
 						+ "%"));
 			}
 			if (pojo.getLastName() != null && pojo.getLastName().length() > 0) {
-				criteria.add(Restrictions.like("lastName", pojo.getLastName()
-						+ "%"));
-			}
-			if (pojo.getAddress() != null && pojo.getAddress().length() > 0) {
-				criteria.add(Restrictions.like("address", pojo.getAddress()
-						+ "%"));
-			}
-			if (pojo.getContactNo() > 0) {
-				criteria.add(Restrictions.like("contactNo", pojo.getContactNo()));
-			}
-
-			// if page size is greater than zero the apply pagination
-			if (pageSize > 0) {
-				criteria.setFirstResult(((pageNo - 1) * pageSize));
-				criteria.setMaxResults(pageSize);
+				criteria.add(Restrictions.like("roll", pojo.getLastName() + "%"));
 			}
 			list = criteria.list();
-		} catch (HibernateException e) {
+			System.out.println("size" + list.size());
+		} catch (Exception e) {
 			e.printStackTrace();
 			log.error("Database Exception..", e);
 		} finally {
 			session.close();
 		}
-		log.debug("Model search End");
+		log.debug("Model findByPK End");
 		return list;
-	}
-
-	/**
-	 * searches Customer as per give parameters
-	 * 
-	 * @param pojo
-	 * @return
-	 */
-
-	public List search(CustomerPOJO pojo) {
-		// TODO Auto-generated method stub
-		return search(pojo, 0, 0);
 	}
 
 }

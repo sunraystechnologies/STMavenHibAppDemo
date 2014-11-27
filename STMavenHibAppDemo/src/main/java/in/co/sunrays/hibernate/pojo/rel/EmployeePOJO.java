@@ -10,6 +10,7 @@ package in.co.sunrays.hibernate.pojo.rel;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
+
 public class EmployeePOJO {
 
 	private long id;

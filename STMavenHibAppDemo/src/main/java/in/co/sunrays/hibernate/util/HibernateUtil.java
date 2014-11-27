@@ -12,6 +12,7 @@ import org.hibernate.cfg.Configuration;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
+
 public class HibernateUtil {
 
 	private static final SessionFactory sessionFactory = buildSessionFactory();
@@ -21,7 +22,9 @@ public class HibernateUtil {
 	 * 
 	 * @return
 	 */
+
 	private static SessionFactory buildSessionFactory() {
+
 		try {
 			// Create the SessionFactory from hibernate.cfg.xml
 			return new Configuration().configure().buildSessionFactory();
@@ -36,6 +39,7 @@ public class HibernateUtil {
 	 * 
 	 * @return
 	 */
+
 	public static SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}

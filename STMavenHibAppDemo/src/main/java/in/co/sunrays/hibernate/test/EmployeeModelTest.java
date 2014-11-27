@@ -7,9 +7,7 @@ import static org.junit.Assert.assertTrue;
 import in.co.sunrays.hibernate.model.EmployeeModel;
 import in.co.sunrays.hibernate.pojo.rel.AddressPOJO;
 import in.co.sunrays.hibernate.pojo.rel.EmployeePOJO;
-
 import java.util.List;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -25,6 +23,7 @@ import org.junit.Test;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
+
 public class EmployeeModelTest {
 	EmployeeModel model = new EmployeeModel();
 

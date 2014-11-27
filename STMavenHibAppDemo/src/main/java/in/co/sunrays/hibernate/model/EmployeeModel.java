@@ -21,6 +21,7 @@ import org.hibernate.criterion.Restrictions;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
+
 public class EmployeeModel {
 
 	private static Logger log = Logger.getLogger(EmployeeModel.class);
@@ -33,6 +34,7 @@ public class EmployeeModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public long add(EmployeePOJO pojo) {
 
 		log.debug("Model add Started");
@@ -67,6 +69,7 @@ public class EmployeeModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public void update(EmployeePOJO pojo) {
 		log.debug("Model update Started");
 		Transaction transaction = null;
@@ -93,6 +96,7 @@ public class EmployeeModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public void delete(EmployeePOJO pojo) {
 		log.debug("Model delete Started");
 		Session session = null;
@@ -147,6 +151,7 @@ public class EmployeeModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public EmployeePOJO findByPK(long pk) {
 		log.debug("Model findByPK Started");
 		Session session = null;
@@ -169,6 +174,7 @@ public class EmployeeModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public List search(EmployeePOJO pojo, int pageNo, int pageSize) {
 		log.debug("Model search Started");
 		Session session = null;
@@ -211,6 +217,7 @@ public class EmployeeModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public List search(EmployeePOJO pojo) {
 		// TODO Auto-generated method stub
 		return search(pojo, 0, 0);

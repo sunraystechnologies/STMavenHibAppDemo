@@ -9,7 +9,9 @@ package in.co.sunrays.hibernate.pojo.inh;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
+
 public class CreditCardDiscriminatorPOJO extends PaymentDiscriminatorPOJO {
+
 	private int cctype;
 
 	public int getCctype() {

@@ -20,6 +20,7 @@ import org.junit.Test;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
+
 public class PaymentHierarchyModelTest {
 	PaymentHierarchyModel model = new PaymentHierarchyModel();
 
@@ -45,6 +46,7 @@ public class PaymentHierarchyModelTest {
 
 	@Test
 	public void testAdd() throws Exception {
+
 		CreditCardHierarchyPOJO pojo = new CreditCardHierarchyPOJO();
 		pojo.setAmount(2000);
 		pojo.setCctype(123442);
@@ -75,6 +77,7 @@ public class PaymentHierarchyModelTest {
 
 	@Test
 	public void testDelete() throws Exception {
+
 		CreditCardHierarchyPOJO pojo = new CreditCardHierarchyPOJO();
 		pojo.setPaymentid(1l);
 		model.delete(pojo);

@@ -9,6 +9,7 @@ package in.co.sunrays.hibernate.pojo.inh;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
+
 public class ChaqueDiscriminatorPOJO extends PaymentDiscriminatorPOJO {
 	private int chaquenumber;
 	private String bankname;

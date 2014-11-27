@@ -9,14 +9,23 @@ package in.co.sunrays.hibernate.pojo.rel;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
+
 public class CustomerPOJO {
 
-	private Long id;
+	private long id;
 	private String firstName;
 	private String lastName;
 	private String address;
 	private String companyName;
 	private PhonePOJO phones;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public PhonePOJO getPhones() {
 		return phones;
@@ -40,14 +49,6 @@ public class CustomerPOJO {
 
 	public void setAddress(String address) {
 		this.address = address;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	private Long contactNo;

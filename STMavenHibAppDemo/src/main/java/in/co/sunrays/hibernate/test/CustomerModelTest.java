@@ -12,7 +12,6 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -24,6 +23,7 @@ import org.junit.Test;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
+
 public class CustomerModelTest {
 
 	CustomerModel model = new CustomerModel();
@@ -52,6 +52,7 @@ public class CustomerModelTest {
 	public void testAdd() throws Exception {
 		PhonePOJO phonePOJO = new PhonePOJO();
 		phonePOJO.setPhonenumber(88175453l);
+
 		CustomerPOJO customerpojo = new CustomerPOJO();
 		customerpojo.setCompanyName("ncs1");
 		customerpojo.setFirstName("test");
@@ -59,6 +60,7 @@ public class CustomerModelTest {
 		customerpojo.setContactNo(9992345624l);
 		customerpojo.setAddress("Sanver Road");
 		customerpojo.setPhones(phonePOJO);
+
 		CustomerPOJO customerpojo1 = new CustomerPOJO();
 		customerpojo1.setCompanyName("ncs2");
 		customerpojo1.setFirstName("test");
@@ -66,11 +68,13 @@ public class CustomerModelTest {
 		customerpojo1.setContactNo(8817982453l);
 		customerpojo1.setAddress("Sanver Road");
 		customerpojo1.setPhones(phonePOJO);
+
 		long pk = model.add(customerpojo);
 		long pk1 = model.add(customerpojo1);
 		customerpojo = model.findByPK(pk);
 		customerpojo1 = model.findByPK(pk1);
 		assertNotNull("Error : Customer Add Fail", customerpojo);
+		assertNotNull("Error : Customer Add Fail", customerpojo1);
 	}
 
 	@Test
@@ -88,7 +92,7 @@ public class CustomerModelTest {
 
 	}
 
-	@Ignore
+	@Test
 	public void testDelete() throws Exception {
 		CustomerPOJO pojo = new CustomerPOJO();
 		pojo.setId(2l);
@@ -101,7 +105,7 @@ public class CustomerModelTest {
 		System.out.println("Success : Customer Delete Success");
 	}
 
-	@Ignore
+	@Test
 	public void testFindByPK() throws Exception {
 
 		CustomerPOJO pojo = model.findByPK(1l);

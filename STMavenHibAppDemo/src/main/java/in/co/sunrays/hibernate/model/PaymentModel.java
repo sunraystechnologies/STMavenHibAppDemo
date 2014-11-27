@@ -18,6 +18,7 @@ import org.hibernate.Transaction;
  * @Copyright (c) sunRays Technologies. All rights reserved.
  * @URL www.sunrays.co.in
  */
+
 public class PaymentModel {
 
 	private static Logger log = Logger.getLogger(PaymentModel.class);
@@ -30,6 +31,7 @@ public class PaymentModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public long add(PaymentPOJO pojo) {
 		log.debug("Model add Started");
 		long pk = 0;
@@ -62,6 +64,7 @@ public class PaymentModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public void update(PaymentPOJO pojo) {
 		log.debug("Model update Started");
 		Transaction transaction = null;
@@ -88,6 +91,7 @@ public class PaymentModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public void delete(PaymentPOJO pojo) {
 		log.debug("Model delete Started");
 		Session session = null;
@@ -114,6 +118,7 @@ public class PaymentModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public PaymentPOJO findByPK(long pk) {
 		log.debug("Model findByPK Started");
 		Session session = null;

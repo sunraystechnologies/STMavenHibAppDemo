@@ -14,7 +14,6 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -55,15 +54,19 @@ public class OrganizationModelTest {
 	public void testAdd() throws Exception {
 		Set<SupplierPOJO> set = new HashSet<SupplierPOJO>();
 		SupplierPOJO supplierPOJO = new SupplierPOJO();
+
 		supplierPOJO.setName("suppliertest");
 		supplierPOJO.setAdrress("suppliertest");
 		supplierPOJO.setPhoneNo("4534533332");
 		set.add(supplierPOJO);
+
 		OrganizationPOJO organizationpojo = new OrganizationPOJO();
+
 		organizationpojo.setName("org test");
 		organizationpojo.setAdrress("org test");
 		organizationpojo.setPhoneNo("1234554322");
 		organizationpojo.setSuppliers(set);
+
 		long pk = model.add(organizationpojo);
 		organizationpojo = model.findByPK(pk);
 
@@ -85,8 +88,9 @@ public class OrganizationModelTest {
 
 	}
 
-	@Ignore
+	@Test
 	public void testDelete() throws Exception {
+
 		OrganizationPOJO pojo = new OrganizationPOJO();
 		pojo.setOrganizationId(2l);
 		model.delete(pojo);

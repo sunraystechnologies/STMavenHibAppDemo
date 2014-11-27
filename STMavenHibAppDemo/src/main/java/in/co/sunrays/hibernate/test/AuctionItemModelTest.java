@@ -54,45 +54,48 @@ public class AuctionItemModelTest {
 	@Test
 	public void testAdd() throws Exception {
 		BidPOJO bidPOJO = new BidPOJO();
-		AuctionItemPOJO pojo = new AuctionItemPOJO();
 
-		pojo.setDescription("test Item");
+		AuctionItemPOJO auctionItemPOJO = new AuctionItemPOJO();
+
+		auctionItemPOJO.setDescription("test Item");
+
 		bidPOJO.setAmount(200);
 		bidPOJO.setTimestamp("11:30:11");
 		bidPOJO.setItemId(1);
+
 		Set<BidPOJO> itemsSet = new HashSet<BidPOJO>();
 		itemsSet.add(bidPOJO);
-		pojo.setBids(itemsSet);
+		auctionItemPOJO.setBids(itemsSet);
 
-		long pk = model.add(pojo);
-		pojo = model.findByPK(pk);
+		long pk = model.add(auctionItemPOJO);
+		auctionItemPOJO = model.findByPK(pk);
 
-		assertNotNull("Error : AuctionItem Add Fail", pojo);
+		assertNotNull("Error : AuctionItem Add Fail", auctionItemPOJO);
 	}
 
 	@Test
 	public void testUpdate() throws Exception {
 
-		AuctionItemPOJO pojo = model.findByPK(1l);
+		AuctionItemPOJO auctionItemPOJO = model.findByPK(1l);
 
-		pojo.setDescription("test Item update");
-		model.update(pojo);
+		auctionItemPOJO.setDescription("test Item update");
+		model.update(auctionItemPOJO);
 		AuctionItemPOJO updatedPOJO = model.findByPK(1l);
 
-		assertEquals("Error : AuctionItem Update Fail", pojo.getDescription(),
-				updatedPOJO.getDescription());
+		assertEquals("Error : AuctionItem Update Fail",
+				auctionItemPOJO.getDescription(), updatedPOJO.getDescription());
 
 	}
 
 	@Test
 	public void testDelete() throws Exception {
-		AuctionItemPOJO pojo = new AuctionItemPOJO();
-		pojo.setId(2l);
-		model.delete(pojo);
+		AuctionItemPOJO auctionItemPOJO = new AuctionItemPOJO();
+		auctionItemPOJO.setId(2l);
+		model.delete(auctionItemPOJO);
 
-		pojo = model.findByPK(pojo.getId());
+		auctionItemPOJO = model.findByPK(auctionItemPOJO.getId());
 
-		assertNull("Error : Delete Test Fail", pojo);
+		assertNull("Error : Delete Test Fail", auctionItemPOJO);
 
 		System.out.println("Success : AuctionItem Delete Success");
 	}
@@ -100,14 +103,14 @@ public class AuctionItemModelTest {
 	@Ignore
 	public void testFindByPK() throws Exception {
 
-		AuctionItemPOJO pojo = model.findByPK(1l);
+		AuctionItemPOJO auctionItemPOJO = model.findByPK(1l);
 
-		assertNotNull("Error : AuctionItem Get By Id Fail", pojo);
+		assertNotNull("Error : AuctionItem Get By Id Fail", auctionItemPOJO);
 
-		if (pojo != null) {
+		if (auctionItemPOJO != null) {
 
-			System.out.println(pojo.getId());
-			System.out.println(pojo.getDescription());
+			System.out.println(auctionItemPOJO.getId());
+			System.out.println(auctionItemPOJO.getDescription());
 
 		}
 
@@ -116,10 +119,10 @@ public class AuctionItemModelTest {
 	@Test
 	public void testSearchAuctionItemPOJO() throws Exception {
 
-		AuctionItemPOJO pojo = new AuctionItemPOJO();
-		pojo.setDescription("te");
+		AuctionItemPOJO auctionItemPOJO = new AuctionItemPOJO();
+		auctionItemPOJO.setDescription("te");
 
-		List<AuctionItemPOJO> list = model.search(pojo);
+		List<AuctionItemPOJO> list = model.search(auctionItemPOJO);
 
 		assertTrue("Error : AuctionItem Search Fail", list.size() > 0);
 

@@ -69,6 +69,7 @@ public class AuctionItemModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public void update(AuctionItemPOJO pojo) {
 		log.debug("Model update Started");
 		Transaction transaction = null;
@@ -95,6 +96,7 @@ public class AuctionItemModel {
 	 * @param pojo
 	 * @return
 	 */
+
 	public void delete(AuctionItemPOJO pojo) {
 		log.debug("Model delete Started");
 		Session session = null;
