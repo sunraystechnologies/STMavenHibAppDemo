@@ -134,6 +134,7 @@ public class EmployeeHQLModel {
 		try {
 			session = factory.openSession();
 			Query query = session.createQuery("from EmployeePOJO");
+			query.setCacheable(true);
 			list = (List) query.list();
 			System.out.println("size" + list.size());
 		} catch (HibernateException e) {

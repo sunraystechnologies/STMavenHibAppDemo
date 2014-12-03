@@ -28,7 +28,12 @@
 		<property name="hibernate.dialect">
 			org.hibernate.dialect.MySQLDialect
 		</property>
-		<property name="hibernate.cache.use_query_cache">false</property>
+		<property name="hibernate.cache.use_second_level_cache">true</property>
+		<property name="hibernate.cache.use_query_cache">true</property>
+		<property name="hibernate.cache.provider_class">
+			org.hibernate.cache.EhCacheProvider
+		</property>
+
 
 		<mapping resource="in/co/sunrays/hibernate/pojo/rel/CustomerPOJO.hbm.xml" />
 		<mapping resource="in/co/sunrays/hibernate/pojo/rel/AddressPOJO.hbm.xml" />
@@ -45,7 +50,7 @@
 			resource="in/co/sunrays/hibernate/pojo/inh/PaymentDiscriminatorPOJO.hbm.xml" />
 		<mapping resource="in/co/sunrays/hibernate/pojo/MarksheetPOJO.hbm.xml" />
 		<mapping resource="in/co/sunrays/hibernate/pojo/StudentPOJO.hbm.xml" />
-			<mapping resource="in/co/sunrays/hibernate/pojo/ProductPOJO.hbm.xml" />
+		<mapping resource="in/co/sunrays/hibernate/pojo/ProductPOJO.hbm.xml" />
 	</session-factory>
 
 </hibernate-configuration>

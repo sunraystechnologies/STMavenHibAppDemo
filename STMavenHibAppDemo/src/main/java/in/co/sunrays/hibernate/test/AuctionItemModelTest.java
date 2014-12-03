@@ -100,7 +100,7 @@ public class AuctionItemModelTest {
 		System.out.println("Success : AuctionItem Delete Success");
 	}
 
-	@Ignore
+	@Test
 	public void testFindByPK() throws Exception {
 
 		AuctionItemPOJO auctionItemPOJO = model.findByPK(1l);

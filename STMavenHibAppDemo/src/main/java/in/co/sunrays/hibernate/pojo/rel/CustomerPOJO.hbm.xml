@@ -29,7 +29,7 @@
 			length="50">
 		</property>
 		<many-to-one name="phones" column="PHONE_NO" class="PhonePOJO"
-			cascade="all" not-null="true">
+			cascade="all" not-null="true" fetch="join">
 		</many-to-one>
 	</class>
 </hibernate-mapping>

@@ -23,7 +23,7 @@
 		<property name="phoneNo" type="java.lang.String" column="PHONE_NO"
 			length="20">
 		</property>
-		<set name="suppliers" cascade="all" table="vender" lazy="true">
+		<set name="suppliers" cascade="all" table="vender" lazy="true"  fetch="select" batch-size="3">
 			<key column="organizationId"></key>
 			<many-to-many column="supplierId" class="SupplierPOJO"></many-to-many>
 		</set>
